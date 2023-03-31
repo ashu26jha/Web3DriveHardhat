@@ -3,7 +3,8 @@ pragma solidity ^0.8.7;
 
 //Errors
 
-error fileNameExist (address acc, string name);
+error fileNameAlreadyExist (address acc, string name);
+error fileDoesNotExist (address acc, string name);
 
 contract Web3Drive{
 
@@ -16,10 +17,17 @@ contract Web3Drive{
     // Immutable variables
 
     address immutable private ownerOfContract;
+    address immutable private deadAddress = 0x000000000000000000000000000000000000dEaD;
 
     // Events
 
     event fileAdded (
+        address indexed owner,
+        string indexed name,
+        string indexed hash
+    );
+
+    event accessGiven (
         address indexed owner,
         string indexed name,
         string indexed hash
@@ -32,8 +40,8 @@ contract Web3Drive{
 
     function addFile(string memory name, string calldata ipfshash) public {
         
-        if(bytes(s_ownfiles[msg.sender][name]).length < 1){
-            revert fileNameExist(msg.sender,name);
+        if(bytes(s_ownfiles[msg.sender][name]).length > 1){
+            revert fileNameAlreadyExist(msg.sender,name);
         }
 
         s_ownfiles[msg.sender][name] = ipfshash;
@@ -42,9 +50,53 @@ contract Web3Drive{
 
     }
 
-    function allowAccess(address account , string memory name) public{
+    function allowAccess(address account, string memory name, string calldata ipfshash) public {
         
+        if(bytes(s_ownfiles[msg.sender][name]).length < 1){
+            revert fileDoesNotExist(msg.sender,name);
+        }
+        
+        s_hasAccess[name].push(account);
+        s_ownfiles[msg.sender][name] = ipfshash;
+
+        emit accessGiven(msg.sender, name, ipfshash);
     }
+
+    function addNickNames (address account, string memory nickname) public {
+        s_nicknames[msg.sender][account] = nickname;
+    }
+
+    function showAccess (string memory name) public view returns (address [] memory) {
+        return s_hasAccess[name];
+    }
+
+    function revokeAccess(address account, string memory ipfshash, string memory name) public {
+        
+        if(bytes(s_ownfiles[msg.sender][name]).length < 1){
+            revert fileDoesNotExist(msg.sender,name);
+        }
+
+        for(uint256 i = 0 ; i < s_hasAccess[name].length; i++){
+            if(s_hasAccess[name][i]==account){
+                s_hasAccess[name][i] = deadAddress;
+                break;
+            }
+        }
+        s_ownfiles[msg.sender][name] = ipfshash;
+    }
+
+    function deleteFile(string memory name) public {
+        if(bytes(s_ownfiles[msg.sender][name]).length < 1){
+            revert fileDoesNotExist(msg.sender,name);
+        }
+
+        delete s_ownfiles[msg.sender][name];
+        delete s_hasAccess[name];
+    }
+
+    // function changeName (string memory name) public {
+
+    // }
 
     function getIPFShash(string memory name) public view returns (string memory){
         return s_ownfiles[msg.sender][name];
