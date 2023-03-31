@@ -1,5 +1,5 @@
 # Web3Drive
-### Structure of smart contract
+## Structure of smart contract
 
 ### 1.  Data structures needed
     
