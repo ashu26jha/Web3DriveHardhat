@@ -101,4 +101,8 @@ contract Web3Drive{
     function getIPFShash(string memory name) public view returns (string memory){
         return s_ownfiles[msg.sender][name];
     }
+
+    function getOwner() public view returns(address) {
+        return ownerOfContract;
+    }
 }
