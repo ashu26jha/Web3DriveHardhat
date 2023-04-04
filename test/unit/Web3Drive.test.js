@@ -56,9 +56,37 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
             await web3contract.allowAccess(testacc1.address,"Test.png","0x1234567892");
             const IPFShash = await ((web3contract.connect(testacc1)).getIPFShash("Test.png"));
             assert.equal("0x1234567892",IPFShash)
-            // console.log("s",IPFShash);
+
         })
     });
+
+    describe("Revokes the access", async function () {
+        it("Adds a file, allows access then revokes",async function () {
+            await web3contract.addFile("Test.png","0x1234567891");
+            await web3contract.allowAccess(testacc1.address,"Test.png","0x1234567892");
+            await web3contract.revokeAccess(testacc1.address,"0x1234567893","Test.png");
+            const IPFShash = await ((web3contract.connect(testacc1)).getIPFShash("Test.png"));
+            assert.equal("",IPFShash.toString());
+            const access = await web3contract.showAccess("Test.png");
+            let flag = 1 ;
+            if(access.includes(testacc1.address)){
+                flag = 0 ;
+            }
+            assert.equal(flag,1);
+
+        })
+    });
+
+    describe("Deletes the file", async function (){
+        it("Adds a file and deletes it", async function (){
+            await web3contract.addFile("Test.png","0x1234567891");
+            await web3contract.deleteFile("Test.png");
+            const resContract = await web3contract.getIPFShash("Test.png");
+            assert.equal("",resContract);
+        })
+    })
+
+
 
 
 

@@ -80,9 +80,11 @@ contract Web3Drive{
         for(uint256 i = 0 ; i < s_hasAccess[name].length; i++){
             if(s_hasAccess[name][i]==account){
                 s_hasAccess[name][i] = deadAddress;
+                s_ownfiles[account][name]="";
                 break;
             }
         }
+        
         s_ownfiles[msg.sender][name] = ipfshash;
     }
 
