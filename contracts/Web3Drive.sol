@@ -57,6 +57,7 @@ contract Web3Drive{
         }
         
         s_hasAccess[name].push(account);
+        s_ownfiles[account][name] = ipfshash;
         s_ownfiles[msg.sender][name] = ipfshash;
 
         emit accessGiven(msg.sender, name, ipfshash);
@@ -94,11 +95,8 @@ contract Web3Drive{
         delete s_hasAccess[name];
     }
 
-    // function changeName (string memory name) public {
-
-    // }
-
     function getIPFShash(string memory name) public view returns (string memory){
+        // Check wheter file exist or not
         return s_ownfiles[msg.sender][name];
     }
 
