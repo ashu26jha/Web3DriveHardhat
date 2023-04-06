@@ -23,13 +23,13 @@ contract Web3Drive{
 
     event fileAdded (
         address indexed owner,
-        string indexed name,
+        string  name,
         string indexed hash
     );
 
     event accessGiven (
         address indexed owner,
-        string indexed name,
+        string name,
         string indexed hash
     );
 
