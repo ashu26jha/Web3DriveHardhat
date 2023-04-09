@@ -1,108 +1,93 @@
 pragma solidity ^0.8.7;
 // SPDX-License-Identifier: MIT
 
-//Errors
+// Errors
 
-error fileNameAlreadyExist (address acc, string name);
-error fileDoesNotExist (address acc, string name);
+error doesNotHavePrivilege () ;
 
 contract Web3Drive{
 
-    // Storage variables : Mappings
-    
-    mapping (address => mapping (string => string)) private s_ownfiles;
-    mapping (address => mapping (address => string)) private s_nicknames;
-    mapping (string => address [] ) private s_hasAccess;
-    
-    // Immutable variables
-
-    address immutable private ownerOfContract;
-    address immutable private deadAddress = 0x000000000000000000000000000000000000dEaD;
-
-    // Events
-
+    // Events 
     event fileAdded (
-        address indexed owner,
-        string  name,
-        string indexed hash
+        address indexed Owner,
+        string  HashValue
     );
 
-    event accessGiven (
-        address indexed owner,
-        string name,
-        string indexed hash
+    event accessLevel (
+        address indexed gotAccess,
+        uint256  token,
+        uint8 AdminPrivilege
     );
 
+    event fileDeleted(
+        address indexed whoDeleted,
+        uint256 token
+    );
+
+    struct Hello{
+        mapping(uint256 => uint8) Access;
+        // Mapping from tokenID to access level
+    }
+    // Immutable variables
+    address immutable private ownerOfContract;
+
+    // Storage Variables
+    uint256 public tokenID;
+
+    // Mapping from address to this struct
+    mapping(uint256 => string)  tokenToIPFS;
+    mapping(address => Hello)  accessList;
+
+    // Modifier
+    modifier requiredAccess3(uint256 tokenId) {
+        if(getAccessList(tokenId)<3){
+            revert doesNotHavePrivilege();
+        }
+        _;
+    }
+
+    modifier requiredAccess2(uint256 tokenId) {
+        if(getAccessList(tokenId)<2){
+            revert doesNotHavePrivilege();
+        }
+        _;
+    }
 
     constructor (){
         ownerOfContract = msg.sender;
     }
 
-    function addFile(string memory name, string calldata ipfshash) public {
-        
-        // if(bytes(s_ownfiles[msg.sender][name]).length > 1){
-        //     revert fileNameAlreadyExist(msg.sender,name);
-        // }
+    function addFile (string memory ipfsHash) public {
+        tokenToIPFS[tokenID] = ipfsHash;
+        ((accessList[msg.sender]).Access[tokenID]) = 3;
+        tokenID = tokenID+1;
 
-        s_ownfiles[msg.sender][name] = ipfshash;
-        s_hasAccess[name].push(msg.sender);
-        emit fileAdded (msg.sender,name,ipfshash);
-
+        emit fileAdded(msg.sender,ipfsHash);
     }
 
-    function allowAccess(address account, string memory name, string calldata ipfshash) public {
-        
-        if(bytes(s_ownfiles[msg.sender][name]).length < 1){
-            revert fileDoesNotExist(msg.sender,name);
-        }
-        
-        s_hasAccess[name].push(account);
-        s_ownfiles[account][name] = ipfshash;
-        s_ownfiles[msg.sender][name] = ipfshash;
-
-        emit accessGiven(msg.sender, name, ipfshash);
+    function updateIPFS (uint256 tokenId, string memory ipfsHash)  requiredAccess2(tokenId) public {
+        tokenToIPFS[tokenId] = ipfsHash;
+        emit fileDeleted(msg.sender,tokenId);
     }
 
-    function addNickNames (address account, string memory nickname) public {
-        s_nicknames[msg.sender][account] = nickname;
+    function deleteFile (uint256 tokenId) requiredAccess3(tokenId) public {
+        tokenToIPFS[tokenId] = "Deleted";
     }
 
-    function showAccess (string memory name) public view returns (address [] memory) {
-        return s_hasAccess[name];
+    function changeAccessLevel (address account,uint256 tokenId,uint8 level) requiredAccess3(tokenId) public {
+        ((accessList[account]).Access[tokenId]) = level;
+        emit accessLevel(account,tokenId,level);
     }
 
-    function revokeAccess(address account, string memory ipfshash, string memory name) public {
-        
-        if(bytes(s_ownfiles[msg.sender][name]).length < 1){
-            revert fileDoesNotExist(msg.sender,name);
-        }
-
-        for(uint256 i = 0 ; i < s_hasAccess[name].length; i++){
-            if(s_hasAccess[name][i]==account){
-                s_hasAccess[name][i] = deadAddress;
-                s_ownfiles[account][name]="";
-                break;
-            }
-        }
-        
-        s_ownfiles[msg.sender][name] = ipfshash;
-    }
-
-    function deleteFile(string memory name) public {
-        if(bytes(s_ownfiles[msg.sender][name]).length < 1){
-            revert fileDoesNotExist(msg.sender,name);
-        }
-
-        delete s_ownfiles[msg.sender][name];
-        delete s_hasAccess[name];
-    }
-
-    function getIPFShash(string memory name) public view returns (string memory){
-        // Check wheter file exist or not
-        return s_ownfiles[msg.sender][name];
-    }
-
-    function getOwner() public view returns(address) {
+    function getOwner () public view returns(address) {
         return ownerOfContract;
+    }
+
+    function tokenIDtoIPFS (uint256 tokenId) public view returns(string memory){
+        return tokenToIPFS[tokenId];
+    }
+
+    function getAccessList (uint256 tokenId) public view returns(uint8){
+        return (accessList[msg.sender]).Access[tokenId];
     }
 }
