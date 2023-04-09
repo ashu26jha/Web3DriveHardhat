@@ -40,9 +40,9 @@ contract Web3Drive{
 
     function addFile(string memory name, string calldata ipfshash) public {
         
-        if(bytes(s_ownfiles[msg.sender][name]).length > 1){
-            revert fileNameAlreadyExist(msg.sender,name);
-        }
+        // if(bytes(s_ownfiles[msg.sender][name]).length > 1){
+        //     revert fileNameAlreadyExist(msg.sender,name);
+        // }
 
         s_ownfiles[msg.sender][name] = ipfshash;
         s_hasAccess[name].push(msg.sender);
