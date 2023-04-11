@@ -1,0 +1,349 @@
+{
+  "address": "0xBc355B4cdb9bA464b4D0C0D86e2e21Fb3262D7ab",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "doesNotHavePrivilege",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "gotAccess",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "token",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint8",
+          "name": "AdminPrivilege",
+          "type": "uint8"
+        }
+      ],
+      "name": "accessLevel",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "Owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "ipfsHash",
+          "type": "string"
+        }
+      ],
+      "name": "fileAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "whoDeleted",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "token",
+          "type": "uint256"
+        }
+      ],
+      "name": "fileDeleted",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "ipfsHash",
+          "type": "string"
+        }
+      ],
+      "name": "addFile",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint8",
+          "name": "level",
+          "type": "uint8"
+        }
+      ],
+      "name": "changeAccessLevel",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "deleteFile",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getAccessList",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "tokenID",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenIDtoIPFS",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "ipfsHash",
+          "type": "string"
+        }
+      ],
+      "name": "updateIPFS",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x2c7803e08e29d156da90ec8ebe67620384c189a2977351ed5cd67683d8179dc9",
+  "receipt": {
+    "to": null,
+    "from": "0x74c7b157af4E5418F03eb928DF309cc98CE38E66",
+    "contractAddress": "0xBc355B4cdb9bA464b4D0C0D86e2e21Fb3262D7ab",
+    "transactionIndex": 2,
+    "gasUsed": "767624",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000008100000000000000000000000000000000000000000000000000000000800000000000000000000100000000004000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000080000000000000000000200000000000000000000020000000000000000000000000000000000001004000000000000000000001000000000000000000000000000000100040000000000000000000000000000000000000000000000000000000000000000000100000",
+    "blockHash": "0xa7ec31379cb261b8bcf25492336c19da1e573fbc8835141b0ad5b6fccccab7b5",
+    "transactionHash": "0x2c7803e08e29d156da90ec8ebe67620384c189a2977351ed5cd67683d8179dc9",
+    "logs": [
+      {
+        "transactionIndex": 2,
+        "blockNumber": 34224369,
+        "transactionHash": "0x2c7803e08e29d156da90ec8ebe67620384c189a2977351ed5cd67683d8179dc9",
+        "address": "0x0000000000000000000000000000000000001010",
+        "topics": [
+          "0x4dfe1bbbcf077ddc3e01291eea2d5c70c2b422b415d95645b9adcfd678cb1d63",
+          "0x0000000000000000000000000000000000000000000000000000000000001010",
+          "0x00000000000000000000000074c7b157af4e5418f03eb928df309cc98ce38e66",
+          "0x000000000000000000000000be188d6641e8b680743a4815dfa0f6208038960f"
+        ],
+        "data": "0x00000000000000000000000000000000000000000000000000051fdb7f504e0800000000000000000000000000000000000000000000000120311278f4311a47000000000000000000000000000000000000000000002fb7cad7e1b182c94c74000000000000000000000000000000000000000000000001202bf29d74e0cc3f000000000000000000000000000000000000000000002fb7cadd018d02199a7c",
+        "logIndex": 4,
+        "blockHash": "0xa7ec31379cb261b8bcf25492336c19da1e573fbc8835141b0ad5b6fccccab7b5"
+      }
+    ],
+    "blockNumber": 34224369,
+    "cumulativeGasUsed": "809624",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 2,
+  "solcInputHash": "d2f95af7d07adc2e72f165501252f394",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.8+commit.dddeac2f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"doesNotHavePrivilege\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"gotAccess\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"token\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"AdminPrivilege\",\"type\":\"uint8\"}],\"name\":\"accessLevel\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"Owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"ipfsHash\",\"type\":\"string\"}],\"name\":\"fileAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"whoDeleted\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"token\",\"type\":\"uint256\"}],\"name\":\"fileDeleted\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"ipfsHash\",\"type\":\"string\"}],\"name\":\"addFile\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint8\",\"name\":\"level\",\"type\":\"uint8\"}],\"name\":\"changeAccessLevel\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"deleteFile\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getAccessList\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"tokenID\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"tokenIDtoIPFS\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"ipfsHash\",\"type\":\"string\"}],\"name\":\"updateIPFS\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/Web3Drive.sol\":\"Web3Drive\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/Web3Drive.sol\":{\"content\":\"pragma solidity ^0.8.7;\\n// SPDX-License-Identifier: MIT\\n\\n// Errors\\n\\nerror doesNotHavePrivilege () ;\\n\\ncontract Web3Drive{\\n\\n    // Events \\n    event fileAdded (\\n        address indexed Owner,\\n        uint256 indexed tokenId,\\n        string ipfsHash\\n    );\\n\\n    event accessLevel (\\n        address indexed gotAccess,\\n        uint256 indexed token,\\n        uint8 AdminPrivilege\\n    );\\n\\n    event fileDeleted(\\n        address indexed whoDeleted,\\n        uint256 indexed token\\n    );\\n\\n    struct Hello{\\n        mapping(uint256 => uint8) Access;\\n        // Mapping from tokenID to access level\\n    }\\n    // Immutable variables\\n    address immutable private ownerOfContract;\\n\\n    // Storage Variables\\n    uint256 public tokenID;\\n\\n    // Mapping from address to this struct\\n    mapping(uint256 => string)  tokenToIPFS;\\n    mapping(address => Hello)  accessList;\\n\\n    // Modifier\\n    modifier requiredAccess3(uint256 tokenId) {\\n        if(getAccessList(tokenId)<3){\\n            revert doesNotHavePrivilege();\\n        }\\n        _;\\n    }\\n\\n    modifier requiredAccess2(uint256 tokenId) {\\n        if(getAccessList(tokenId)<2){\\n            revert doesNotHavePrivilege();\\n        }\\n        _;\\n    }\\n\\n    constructor (){\\n        ownerOfContract = msg.sender;\\n    }\\n\\n    function addFile (string memory ipfsHash) public {\\n        tokenToIPFS[tokenID] = ipfsHash;\\n        ((accessList[msg.sender]).Access[tokenID]) = 3;\\n        tokenID = tokenID+1;\\n\\n        emit fileAdded(msg.sender,tokenID-1,ipfsHash);\\n    }\\n\\n    function updateIPFS (uint256 tokenId, string memory ipfsHash)  requiredAccess2(tokenId) public {\\n        tokenToIPFS[tokenId] = ipfsHash;\\n        emit fileDeleted(msg.sender,tokenId);\\n    }\\n\\n    function deleteFile (uint256 tokenId) requiredAccess3(tokenId) public {\\n        tokenToIPFS[tokenId] = \\\"Deleted\\\";\\n        emit fileDeleted(msg.sender,tokenId);\\n    }\\n\\n    function changeAccessLevel (address account,uint256 tokenId,uint8 level) requiredAccess3(tokenId) public {\\n        ((accessList[account]).Access[tokenId]) = level;\\n        emit accessLevel(account,tokenId,level);\\n    }\\n\\n    function getOwner () public view returns(address) {\\n        return ownerOfContract;\\n    }\\n\\n    function tokenIDtoIPFS (uint256 tokenId) public view returns(string memory){\\n        return tokenToIPFS[tokenId];\\n    }\\n\\n    function getAccessList (uint256 tokenId) public view returns(uint8){\\n        return (accessList[msg.sender]).Access[tokenId];\\n    }\\n}\\n\",\"keccak256\":\"0x6317c69e2bb6cb284f64a62f32efa9798ffe76f2b87f77fa8e4b9c3cf8a935db\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60a060405234801561001057600080fd5b503373ffffffffffffffffffffffffffffffffffffffff1660808173ffffffffffffffffffffffffffffffffffffffff1660601b8152505060805160601c610cf561006660003960006102fa0152610cf56000f3fe608060405234801561001057600080fd5b50600436106100885760003560e01c8063be4840521161005b578063be48405214610115578063c5b4200614610131578063eb9b9b641461014d578063f31bb1771461016957610088565b806330d8bb9b1461008d57806345149390146100a9578063893d20e8146100d9578063a5c42ef1146100f7575b600080fd5b6100a760048036038101906100a291906108c1565b610199565b005b6100c360048036038101906100be919061091d565b610251565b6040516100d091906109d2565b60405180910390f35b6100e16102f6565b6040516100ee9190610a35565b60405180910390f35b6100ff61031e565b60405161010c9190610a5f565b60405180910390f35b61012f600480360381019061012a9190610adf565b610324565b005b61014b6004803603810190610146919061091d565b61042c565b005b61016760048036038101906101629190610b32565b610518565b005b610183600480360381019061017e919061091d565b610624565b6040516101909190610b8a565b60405180910390f35b8160026101a582610624565b60ff1610156101e0576040517ff06c071c00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b8160016000858152602001908152602001600020908051906020019061020792919061068e565b50823373ffffffffffffffffffffffffffffffffffffffff167ff1e5304e5011da2cafdda3d7ebfcf2367dd9e34e499bb509c77a7f990808cd2060405160405180910390a3505050565b606060016000838152602001908152602001600020805461027190610bd4565b80601f016020809104026020016040519081016040528092919081815260200182805461029d90610bd4565b80156102ea5780601f106102bf576101008083540402835291602001916102ea565b820191906000526020600020905b8154815290600101906020018083116102cd57829003601f168201915b50505050509050919050565b60007f0000000000000000000000000000000000000000000000000000000000000000905090565b60005481565b81600361033082610624565b60ff16101561036b576040517ff06c071c00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b81600260008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600001600085815260200190815260200160002060006101000a81548160ff021916908360ff160217905550828473ffffffffffffffffffffffffffffffffffffffff167fe539cdf3157899d6f0eae1caf49852606c69feb04420771bc50bba47ee379fe08460405161041e9190610b8a565b60405180910390a350505050565b80600361043882610624565b60ff161015610473576040517ff06c071c00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b6040518060400160405280600781526020017f44656c65746564000000000000000000000000000000000000000000000000008152506001600084815260200190815260200160002090805190602001906104cf92919061068e565b50813373ffffffffffffffffffffffffffffffffffffffff167ff1e5304e5011da2cafdda3d7ebfcf2367dd9e34e499bb509c77a7f990808cd2060405160405180910390a35050565b806001600080548152602001908152602001600020908051906020019061054092919061068e565b506003600260003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160008054815260200190815260200160002060006101000a81548160ff021916908360ff16021790555060016000546105be9190610c35565b60008190555060016000546105d39190610c8b565b3373ffffffffffffffffffffffffffffffffffffffff167f9763dfecd5bc8c0aecec80e86ba688869936188415860b5623f08ef17757e4118360405161061991906109d2565b60405180910390a350565b6000600260003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600001600083815260200190815260200160002060009054906101000a900460ff169050919050565b82805461069a90610bd4565b90600052602060002090601f0160209004810192826106bc5760008555610703565b82601f106106d557805160ff1916838001178555610703565b82800160010185558215610703579182015b828111156107025782518255916020019190600101906106e7565b5b5090506107109190610714565b5090565b5b8082111561072d576000816000905550600101610715565b5090565b6000604051905090565b600080fd5b600080fd5b6000819050919050565b61075881610745565b811461076357600080fd5b50565b6000813590506107758161074f565b92915050565b600080fd5b600080fd5b6000601f19601f8301169050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b6107ce82610785565b810181811067ffffffffffffffff821117156107ed576107ec610796565b5b80604052505050565b6000610800610731565b905061080c82826107c5565b919050565b600067ffffffffffffffff82111561082c5761082b610796565b5b61083582610785565b9050602081019050919050565b82818337600083830152505050565b600061086461085f84610811565b6107f6565b9050828152602081018484840111156108805761087f610780565b5b61088b848285610842565b509392505050565b600082601f8301126108a8576108a761077b565b5b81356108b8848260208601610851565b91505092915050565b600080604083850312156108d8576108d761073b565b5b60006108e685828601610766565b925050602083013567ffffffffffffffff81111561090757610906610740565b5b61091385828601610893565b9150509250929050565b6000602082840312156109335761093261073b565b5b600061094184828501610766565b91505092915050565b600081519050919050565b600082825260208201905092915050565b60005b83811015610984578082015181840152602081019050610969565b83811115610993576000848401525b50505050565b60006109a48261094a565b6109ae8185610955565b93506109be818560208601610966565b6109c781610785565b840191505092915050565b600060208201905081810360008301526109ec8184610999565b905092915050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000610a1f826109f4565b9050919050565b610a2f81610a14565b82525050565b6000602082019050610a4a6000830184610a26565b92915050565b610a5981610745565b82525050565b6000602082019050610a746000830184610a50565b92915050565b610a8381610a14565b8114610a8e57600080fd5b50565b600081359050610aa081610a7a565b92915050565b600060ff82169050919050565b610abc81610aa6565b8114610ac757600080fd5b50565b600081359050610ad981610ab3565b92915050565b600080600060608486031215610af857610af761073b565b5b6000610b0686828701610a91565b9350506020610b1786828701610766565b9250506040610b2886828701610aca565b9150509250925092565b600060208284031215610b4857610b4761073b565b5b600082013567ffffffffffffffff811115610b6657610b65610740565b5b610b7284828501610893565b91505092915050565b610b8481610aa6565b82525050565b6000602082019050610b9f6000830184610b7b565b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052602260045260246000fd5b60006002820490506001821680610bec57607f821691505b60208210811415610c0057610bff610ba5565b5b50919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b6000610c4082610745565b9150610c4b83610745565b9250827fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff03821115610c8057610c7f610c06565b5b828201905092915050565b6000610c9682610745565b9150610ca183610745565b925082821015610cb457610cb3610c06565b5b82820390509291505056fea26469706673582212200a1a0d9f66f3447f485a8f271cb6230971f2c8d902577f1f440ab3a61edb174464736f6c63430008080033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100885760003560e01c8063be4840521161005b578063be48405214610115578063c5b4200614610131578063eb9b9b641461014d578063f31bb1771461016957610088565b806330d8bb9b1461008d57806345149390146100a9578063893d20e8146100d9578063a5c42ef1146100f7575b600080fd5b6100a760048036038101906100a291906108c1565b610199565b005b6100c360048036038101906100be919061091d565b610251565b6040516100d091906109d2565b60405180910390f35b6100e16102f6565b6040516100ee9190610a35565b60405180910390f35b6100ff61031e565b60405161010c9190610a5f565b60405180910390f35b61012f600480360381019061012a9190610adf565b610324565b005b61014b6004803603810190610146919061091d565b61042c565b005b61016760048036038101906101629190610b32565b610518565b005b610183600480360381019061017e919061091d565b610624565b6040516101909190610b8a565b60405180910390f35b8160026101a582610624565b60ff1610156101e0576040517ff06c071c00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b8160016000858152602001908152602001600020908051906020019061020792919061068e565b50823373ffffffffffffffffffffffffffffffffffffffff167ff1e5304e5011da2cafdda3d7ebfcf2367dd9e34e499bb509c77a7f990808cd2060405160405180910390a3505050565b606060016000838152602001908152602001600020805461027190610bd4565b80601f016020809104026020016040519081016040528092919081815260200182805461029d90610bd4565b80156102ea5780601f106102bf576101008083540402835291602001916102ea565b820191906000526020600020905b8154815290600101906020018083116102cd57829003601f168201915b50505050509050919050565b60007f0000000000000000000000000000000000000000000000000000000000000000905090565b60005481565b81600361033082610624565b60ff16101561036b576040517ff06c071c00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b81600260008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600001600085815260200190815260200160002060006101000a81548160ff021916908360ff160217905550828473ffffffffffffffffffffffffffffffffffffffff167fe539cdf3157899d6f0eae1caf49852606c69feb04420771bc50bba47ee379fe08460405161041e9190610b8a565b60405180910390a350505050565b80600361043882610624565b60ff161015610473576040517ff06c071c00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b6040518060400160405280600781526020017f44656c65746564000000000000000000000000000000000000000000000000008152506001600084815260200190815260200160002090805190602001906104cf92919061068e565b50813373ffffffffffffffffffffffffffffffffffffffff167ff1e5304e5011da2cafdda3d7ebfcf2367dd9e34e499bb509c77a7f990808cd2060405160405180910390a35050565b806001600080548152602001908152602001600020908051906020019061054092919061068e565b506003600260003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060000160008054815260200190815260200160002060006101000a81548160ff021916908360ff16021790555060016000546105be9190610c35565b60008190555060016000546105d39190610c8b565b3373ffffffffffffffffffffffffffffffffffffffff167f9763dfecd5bc8c0aecec80e86ba688869936188415860b5623f08ef17757e4118360405161061991906109d2565b60405180910390a350565b6000600260003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600001600083815260200190815260200160002060009054906101000a900460ff169050919050565b82805461069a90610bd4565b90600052602060002090601f0160209004810192826106bc5760008555610703565b82601f106106d557805160ff1916838001178555610703565b82800160010185558215610703579182015b828111156107025782518255916020019190600101906106e7565b5b5090506107109190610714565b5090565b5b8082111561072d576000816000905550600101610715565b5090565b6000604051905090565b600080fd5b600080fd5b6000819050919050565b61075881610745565b811461076357600080fd5b50565b6000813590506107758161074f565b92915050565b600080fd5b600080fd5b6000601f19601f8301169050919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b6107ce82610785565b810181811067ffffffffffffffff821117156107ed576107ec610796565b5b80604052505050565b6000610800610731565b905061080c82826107c5565b919050565b600067ffffffffffffffff82111561082c5761082b610796565b5b61083582610785565b9050602081019050919050565b82818337600083830152505050565b600061086461085f84610811565b6107f6565b9050828152602081018484840111156108805761087f610780565b5b61088b848285610842565b509392505050565b600082601f8301126108a8576108a761077b565b5b81356108b8848260208601610851565b91505092915050565b600080604083850312156108d8576108d761073b565b5b60006108e685828601610766565b925050602083013567ffffffffffffffff81111561090757610906610740565b5b61091385828601610893565b9150509250929050565b6000602082840312156109335761093261073b565b5b600061094184828501610766565b91505092915050565b600081519050919050565b600082825260208201905092915050565b60005b83811015610984578082015181840152602081019050610969565b83811115610993576000848401525b50505050565b60006109a48261094a565b6109ae8185610955565b93506109be818560208601610966565b6109c781610785565b840191505092915050565b600060208201905081810360008301526109ec8184610999565b905092915050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000610a1f826109f4565b9050919050565b610a2f81610a14565b82525050565b6000602082019050610a4a6000830184610a26565b92915050565b610a5981610745565b82525050565b6000602082019050610a746000830184610a50565b92915050565b610a8381610a14565b8114610a8e57600080fd5b50565b600081359050610aa081610a7a565b92915050565b600060ff82169050919050565b610abc81610aa6565b8114610ac757600080fd5b50565b600081359050610ad981610ab3565b92915050565b600080600060608486031215610af857610af761073b565b5b6000610b0686828701610a91565b9350506020610b1786828701610766565b9250506040610b2886828701610aca565b9150509250925092565b600060208284031215610b4857610b4761073b565b5b600082013567ffffffffffffffff811115610b6657610b65610740565b5b610b7284828501610893565b91505092915050565b610b8481610aa6565b82525050565b6000602082019050610b9f6000830184610b7b565b92915050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052602260045260246000fd5b60006002820490506001821680610bec57607f821691505b60208210811415610c0057610bff610ba5565b5b50919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052601160045260246000fd5b6000610c4082610745565b9150610c4b83610745565b9250827fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff03821115610c8057610c7f610c06565b5b828201905092915050565b6000610c9682610745565b9150610ca183610745565b925082821015610cb457610cb3610c06565b5b82820390509291505056fea26469706673582212200a1a0d9f66f3447f485a8f271cb6230971f2c8d902577f1f440ab3a61edb174464736f6c63430008080033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 34,
+        "contract": "contracts/Web3Drive.sol:Web3Drive",
+        "label": "tokenID",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 38,
+        "contract": "contracts/Web3Drive.sol:Web3Drive",
+        "label": "tokenToIPFS",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_uint256,t_string_storage)"
+      },
+      {
+        "astId": 43,
+        "contract": "contracts/Web3Drive.sol:Web3Drive",
+        "label": "accessList",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_address,t_struct(Hello)30_storage)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_struct(Hello)30_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct Web3Drive.Hello)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Hello)30_storage"
+      },
+      "t_mapping(t_uint256,t_string_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => string)",
+        "numberOfBytes": "32",
+        "value": "t_string_storage"
+      },
+      "t_mapping(t_uint256,t_uint8)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => uint8)",
+        "numberOfBytes": "32",
+        "value": "t_uint8"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(Hello)30_storage": {
+        "encoding": "inplace",
+        "label": "struct Web3Drive.Hello",
+        "members": [
+          {
+            "astId": 29,
+            "contract": "contracts/Web3Drive.sol:Web3Drive",
+            "label": "Access",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_uint256,t_uint8)"
+          }
+        ],
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint8": {
+        "encoding": "inplace",
+        "label": "uint8",
+        "numberOfBytes": "1"
+      }
+    }
+  }
+}
