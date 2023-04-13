@@ -10,19 +10,26 @@ contract Web3Drive{
     // Events 
     event fileAdded (
         address indexed Owner,
-        uint256 indexed tokenId,
+        uint256 indexed token,
         string ipfsHash
     );
 
     event accessLevel (
         address indexed gotAccess,
         uint256 indexed token,
-        uint8 AdminPrivilege
+        uint8 AdminPrivilege,
+        string ipfsHash
     );
 
     event fileDeleted(
         address indexed whoDeleted,
         uint256 indexed token
+    );
+
+    event IPFSchanged(
+        address indexed account,
+        uint256 indexed token,
+        string ipfsHash
     );
 
     struct Hello{
@@ -68,7 +75,7 @@ contract Web3Drive{
 
     function updateIPFS (uint256 tokenId, string memory ipfsHash)  requiredAccess2(tokenId) public {
         tokenToIPFS[tokenId] = ipfsHash;
-        emit fileDeleted(msg.sender,tokenId);
+        emit IPFSchanged(msg.sender,tokenId,ipfsHash);
     }
 
     function deleteFile (uint256 tokenId) requiredAccess3(tokenId) public {
@@ -78,7 +85,8 @@ contract Web3Drive{
 
     function changeAccessLevel (address account,uint256 tokenId,uint8 level) requiredAccess3(tokenId) public {
         ((accessList[account]).Access[tokenId]) = level;
-        emit accessLevel(account,tokenId,level);
+        string memory ipfsHash = tokenIDtoIPFS(tokenId);
+        emit accessLevel(account,tokenId,level,ipfsHash);
     }
 
     function getOwner () public view returns(address) {
