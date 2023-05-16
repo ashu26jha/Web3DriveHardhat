@@ -43,50 +43,33 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
     });
     
 
-    // describe("Allow access to another user", async function (){
+    describe("Allow access to another user", async function (){
         
-    //     it("Only owner can allow access", async function (){
-    //         await web3contract.addFile("Test.png","0x1234567891");
-    //         await expect ((web3contract.connect(testacc1)).allowAccess(testacc2,"Test.png","0x1234567891")).to.be.revertedWith('fileDoesNotExist');
-    //     });
+        it("Only accounts with admin access can modify access", async function (){
+            await web3contract.addFile("0x1234567891");
+            await expect ((web3contract.connect(testacc1)).changeAccessLevel(testacc2,0,3)).to.be.revertedWith('doesNotHavePrivilege');
+        });
         
-    //     it("Checks whether it has access by retrieving it's hash", async function (){
-    //         await web3contract.addFile("Test.png","0x1234567891");
-    //         await web3contract.allowAccess(testacc1.address,"Test.png","0x1234567892");
-    //         const IPFShash = await ((web3contract.connect(testacc1)).getIPFShash("Test.png"));
-    //         assert.equal("0x1234567892",IPFShash)
+    });
 
-    //     })
-    // });
+    describe("Other account changes IPFS Hash", async function () {
+        it("Adds a file, allows access to other account that account changes IPFS Hash",async function () {
+            await web3contract.addFile("0x1234567891");
+            await (web3contract.connect(accounts[0])).changeAccessLevel(testacc1.address ,0,3)
+            await (web3contract.connect(accounts[0])).updateIPFS(0,"0x987654321");
+            assert.equal("0x987654321", await web3contract.tokenIDtoIPFS(0));
 
-    // describe("Revokes the access", async function () {
-    //     it("Adds a file, allows access then revokes",async function () {
-    //         await web3contract.addFile("Test.png","0x1234567891");
-    //         await web3contract.allowAccess(testacc1.address,"Test.png","0x1234567892");
-    //         await web3contract.revokeAccess(testacc1.address,"0x1234567893","Test.png");
-    //         const IPFShash = await ((web3contract.connect(testacc1)).getIPFShash("Test.png"));
-    //         assert.equal("",IPFShash.toString());
-    //         const access = await web3contract.showAccess("Test.png");
-    //         let flag = 1 ;
-    //         if(access.includes(testacc1.address)){
-    //             flag = 0 ;
-    //         }
-    //         assert.equal(flag,1);
+        })
+    });
 
-    //     })
-    // });
-
-    // describe("Deletes the file", async function (){
-    //     it("Adds a file and deletes it", async function (){
-    //         await web3contract.addFile("Test.png","0x1234567891");
-    //         await web3contract.deleteFile("Test.png");
-    //         const resContract = await web3contract.getIPFShash("Test.png");
-    //         assert.equal("",resContract);
-    //     })
-    // })
-
-
-
+    describe("Deletes the file", async function (){
+        it("Adds a file and deletes it", async function (){
+            await web3contract.addFile("1");
+            await web3contract.deleteFile(0);
+            const resContract = await web3contract.tokenIDtoIPFS(0);
+            assert.equal("Deleted",resContract);
+        })
+    });
 
 
 })

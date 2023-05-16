@@ -36,6 +36,7 @@ contract Web3Drive{
         mapping(uint256 => uint8) Access;
         // Mapping from tokenID to access level
     }
+    
     // Immutable variables
     address immutable private ownerOfContract;
 
@@ -48,14 +49,14 @@ contract Web3Drive{
 
     // Modifier
     modifier requiredAccess3(uint256 tokenId) {
-        if(getAccessList(tokenId)<3){
+        if(getAccessLevel(tokenId)<3){
             revert doesNotHavePrivilege();
         }
         _;
     }
 
     modifier requiredAccess2(uint256 tokenId) {
-        if(getAccessList(tokenId)<2){
+        if(getAccessLevel(tokenId)<2){
             revert doesNotHavePrivilege();
         }
         _;
@@ -97,7 +98,7 @@ contract Web3Drive{
         return tokenToIPFS[tokenId];
     }
 
-    function getAccessList (uint256 tokenId) public view returns(uint8){
+    function getAccessLevel (uint256 tokenId) public view returns(uint8){
         return (accessList[msg.sender]).Access[tokenId];
     }
 }
